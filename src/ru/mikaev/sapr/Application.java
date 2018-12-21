@@ -1,19 +1,20 @@
 package ru.mikaev.sapr;
 
-import javax.swing.*;
-import java.awt.*;
+import ru.mikaev.sapr.frame.FrameFactory;
+import ru.mikaev.sapr.frame.MainFrame;
 
 public class Application {
     public static void main(String[] args) {
-        JFrame jFrame = new JFrame();
-        jFrame.setVisible(true);
-        jFrame.setTitle("SAPR");
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGUI();
+            }
+        });
+    }
 
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = toolkit.getScreenSize();
-        final int width = 500;
-        final int height = 500;
-        jFrame.setBounds(screenSize.width/2, screenSize.height/2, width, height);
+
+    private static void createAndShowGUI() {
+        final MainFrame mainFrame = FrameFactory.mainFrame();
+        mainFrame.setVisible(true);
     }
 }
